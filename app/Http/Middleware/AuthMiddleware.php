@@ -21,9 +21,6 @@ class AuthMiddleware
             Config::set('database.connections.mysql.database', Auth::user()->db_name);
             app('db')->purge();
         }
-        
-       
-       
          return $next($request);
     }
 }

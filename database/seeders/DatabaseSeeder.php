@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
                 'db_name' => 'db_2',
             ]
            
+           
         ];
 
         foreach ($users as $user) {
