@@ -16,16 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login',[AuthController::class,'login']);
+Route::post('login', [AuthController::class, 'login']);
 
+// Route::middleware(['dynamic_db'])->group(function () {
+//     Route::get('/user', [ProductController::class, 'user']);
+// });
 Route::middleware('auth:sanctum')->group(function () {
-    
     Route::middleware(['dynamic_db'])->group(function () {
         Route::get('/products', [ProductController::class, 'products']);
     });
 });
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::get('test', [ProductController::class, 'test']);
+
+
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
-
